@@ -2,7 +2,8 @@ const dataModel=require('./dataModel')
 
 exports.sendMessage = async (req, res) => {
     try {
-        const messageData = await dataModel.findByIdAndUpdate(req.params.id, req.body, {
+      const username=req.body.username;
+        const messageData = await dataModel.findByIdAndUpdate(username, req.body, {
           new: true,
           runValidator: true,
         });
@@ -22,7 +23,8 @@ exports.sendMessage = async (req, res) => {
 
   exports.recieveMessage = async (req, res) => {
     try {
-      const messageData = await dataModel.findById(req.params.id);
+      const currentUser=req.body;
+      const messageData = await dataModel.findById(currentUser);
       res.status(200).json({
         status: "success",
         messageData
