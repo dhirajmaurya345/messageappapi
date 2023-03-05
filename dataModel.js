@@ -6,17 +6,9 @@ const dataSchema = new mongoose.Schema(
       trim: true,
     },
     recieverId: {
-      type: Number,
+      type: String,
     },
     message: {
-      type: String,
-      trim: true,
-    },
-    smsto: {
-      type: String,
-      trim: true,
-    },
-    smsfrom: {
       type: String,
       trim: true,
     },
