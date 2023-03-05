@@ -2,8 +2,9 @@ const dataModel=require('./dataModel')
 
 exports.sendMessage = async (req, res) => {
     try {
-      
+      console.log(req.body)
         const messageData = await dataModel.create(req.body);
+        
         res.status(200).json({
           status: "success",
           data: {
@@ -20,7 +21,11 @@ exports.sendMessage = async (req, res) => {
 
   exports.recieveMessage = async (req, res) => {
     try {
-      const messageData = await dataModel.find({senderId: req.query.senderId,recieverId: req.query.recieverId});
+      const messageData = await dataModel.find(
+        {
+          senderId:{ $in: [req.query.senderId ,req.query.recieverId]} ,
+          recieverId: { $in: [req.query.senderId ,req.query.recieverId]}
+        });
       res.status(200).json({
         status: "success",
         messageData
