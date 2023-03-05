@@ -1,29 +1,30 @@
 const mongoose = require("mongoose");
-const dataSchema = new mongoose.Schema({
-  name: {
-    type: String,
-       trim: true,
+const dataSchema = new mongoose.Schema(
+  {
+    senderId: {
+      type: String,
+      trim: true,
+    },
+    recieverId: {
+      type: Number,
+    },
+    message: {
+      type: String,
+      trim: true,
+    },
+    smsto: {
+      type: String,
+      trim: true,
+    },
+    smsfrom: {
+      type: String,
+      trim: true,
+    },
   },
-  username: {
-    type: Number,
-   
-  },
-   message: {
-    type: String,
-    trim: true,
-  },
-  sendAt: {
-    type: Date,
-    default: Date.now(),
-    select: false,
-  },
-  recievedAt: {
-    type: Date,
-    default: Date.now(),
-    select: false,
-  },
- 
-});
+  {
+    timestamps: { createdAt: true, updatedAt: false },
+  }
+);
 
 const dataModel = new mongoose.model("dataModel", dataSchema);
 

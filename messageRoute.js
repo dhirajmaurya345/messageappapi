@@ -3,8 +3,9 @@ const controller=require("./controller")
 const messageRoute = express.Router();
 
 messageRoute
-.route("/:id")
+.route("/")
 .get(controller.recieveMessage)
+.get(controller.readData)
 .post(controller.sendMessage)
 
 messageRoute

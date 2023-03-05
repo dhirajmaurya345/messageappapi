@@ -58,7 +58,6 @@ exports.sendMessage = async (req, res) => {
     try {
       console.log("request body",req.body)  
       const messageData = await dataModel.create(req.body);
-        
         res.status(200).json({
           status: "success",
           data: {
@@ -71,5 +70,23 @@ exports.sendMessage = async (req, res) => {
           message: err,
         });
       }
+  };
+
+  
+
+  exports.readData = async (req, res) => {
+    try {
+  
+      const messageData = await dataModel.find();
+      res.status(200).json({
+        status: "success",
+        messageData
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: "Failed",
+        message: err,
+      });
+    }
   };
 
