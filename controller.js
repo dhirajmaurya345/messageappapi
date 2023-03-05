@@ -27,7 +27,7 @@ exports.sendMessage = async (req, res) => {
           recieverId: { $in: [req.query.senderId ,req.query.recieverId]}
         });
       res.status(200).json({
-        status: "success",
+        status: "success", 
         messageData
       });
     } catch (err) {
